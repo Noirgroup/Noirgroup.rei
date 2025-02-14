@@ -1,0 +1,2763 @@
+/*=============== GOOGLE FONTS ===============*/
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+
+:root {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Montserrat Alternates", sans-serif;
+    --h1-font-size: 1.5rem;
+    --normal-font-size: .938rem;
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-medium: 500;
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+
+/*========== Responsive typography ==========*/
+
+@media screen and (min-width: 1150px) {
+     :root {
+        --normal-font-size: 1rem;
+    }
+}
+
+
+/*=============== BASE ===============*/
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--white-color);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.container {
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
+
+
+/*=============== HEADER & NAV ===============*/
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--black-color);
+    z-index: var(--z-fixed);
+}
+
+.nav {
+    position: relative;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1450px;
+    min-height: 110px;
+}
+
+.nav__logo {
+    color: var(--white-color);
+    font-weight: var(--font-medium);
+}
+
+.nav__close,
+.nav__toggle {
+    display: flex;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+/* Navigation for mobile devices */
+
+@media screen and (max-width: 1150px) {
+    .nav__menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        background-color: var(--black-color);
+        width: 100%;
+        height: 100%;
+        padding: 6rem 3.5rem 4.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: left .4s;
+    }
+    .nav__item {
+        transform: translateX(-150px);
+        visibility: hidden;
+        transition: transform .4s ease-out, visibility .4s;
+    }
+    .nav__item:nth-child(1) {
+        transition-delay: .1s;
+    }
+    .nav__item:nth-child(2) {
+        transition-delay: .2s;
+    }
+    .nav__item:nth-child(3) {
+        transition-delay: .3s;
+    }
+    .nav__item:nth-child(4) {
+        transition-delay: .4s;
+    }
+    .nav__item:nth-child(5) {
+        transition-delay: .5s;
+    }
+}
+
+.nav__list,
+.nav__social {
+    display: flex;
+}
+
+.nav__list {
+    flex-direction: column;
+    row-gap: 3rem;
+    margin-right: 200px;
+}
+
+.nav__link {
+    position: relative;
+    color: var(--white-color);
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-medium);
+    display: inline-flex;
+    align-items: center;
+    transition: opacity .4s;
+}
+
+.nav__link i {
+    font-size: 2rem;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s, visibility .4s;
+}
+
+.nav__link span {
+    position: relative;
+    transition: margin .4s;
+}
+
+.nav__link span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background-color: var(--white-color);
+    transition: width .4s ease-out;
+}
+
+
+/* Animation link on hover */
+
+.nav__link:hover span {
+    margin-left: 2.5rem;
+}
+
+.nav__link:hover i {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav__link:hover span::after {
+    width: 100%;
+}
+
+
+/* Sibling fade animation */
+
+.nav__list:has(.nav__link:hover) .nav__link:not(:hover) {
+    opacity: .4;
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.nav__social {
+    column-gap: 1rem;
+}
+
+.nav__social-link {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    transition: transform .4s;
+}
+
+.nav__social-link:hover {
+    transform: translateY(-.25rem);
+}
+
+
+/* Show menu */
+
+.show-menu {
+    left: 0;
+}
+
+
+/* Animation link when displaying menu */
+
+.show-menu .nav__item {
+    visibility: visible;
+    transform: translateX(0);
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+
+
+/* For large devices */
+
+@media screen and (min-width: 1150px) {
+    .container {
+        margin-inline: auto;
+    }
+    .nav {
+        height: calc(var(--header-height) + 2rem);
+    }
+    .nav__toggle,
+    .nav__close {
+        display: none;
+    }
+    .nav__link {
+        font-size: var(--normal-font-size);
+    }
+    .nav__link i {
+        font-size: 1.5rem;
+    }
+    .nav__list {
+        flex-direction: row;
+        column-gap: 3.5rem;
+    }
+    .nav__menu {
+        display: flex;
+        align-items: center;
+        column-gap: 3.5rem;
+    }
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav__logo-img {
+    width: 250px;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .nav__logo-img {
+        width: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav__logo-img {
+        width: 150px;
+    }
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: -5px;
+    /* Shifted left by 50px */
+}
+
+.search-icon,
+.close-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.search-icon img,
+.close-icon img {
+    width: 26px;
+    height: 26px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    /* Changed to make it less round */
+    overflow: hidden;
+    width: 0;
+    height: 40px;
+    /* Increased height */
+    transition: width 0.5s ease;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: #000000;
+    color: #fff;
+    padding: 10px 10px;
+    width: 100%;
+    font-size: 16px;
+    /* Increased font size */
+}
+
+.search-bar .close-icon {
+    display: none;
+    margin: 0 10px;
+    /* Centering the icon */
+}
+
+.search-container.active .search-bar {
+    width: 210px;
+    /* Increased width */
+    border-color: #fff;
+}
+
+.search-container.active .search-bar .close-icon {
+    display: block;
+}
+
+.search-container.active .search-icon {
+    display: none;
+}
+
+.icon-bar {
+    display: flex;
+    gap: 0px;
+    margin-right: -40px;
+}
+
+
+/* Стилі для окремих іконок */
+
+.icon {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+/* Стилі для зображень іконок */
+
+.icon img {
+    width: 26px;
+    height: 26px;
+}
+
+
+/* Стилі для підказок (tooltip) */
+
+.tooltip {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+
+/* Показ підказок при наведенні */
+
+.search-icon:hover {
+    transform: translateY(-3px);
+    /* Збільшення і підняття іконки */
+}
+
+.search-icon {
+    transition: transform 0.3s ease;
+}
+
+.icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: translateY(-5px);
+}
+
+.tooltip,
+.tooltip1 {
+    display: none;
+    /* Припустимо, що ви використовуєте це для підказок, які не відображаються за замовчуванням */
+}
+
+.icon:hover .tooltip,
+.icon:hover .tooltip1 {
+    display: block;
+    /* Відображення підказки при наведенні, якщо це потрібно */
+}
+
+.hero-section {
+    position: relative;
+    height: 45vh;
+    background: url('/STYLEZERO/Картинки/19.png') no-repeat center top;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.text-content {
+    margin-left: 50px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-content h1 {
+    font-size: 4vh;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 2.2vh;
+    max-width: 500px;
+}
+
+
+/* Media queries for responsive text size */
+
+@media (max-width: 1200px) {
+    .text-content h1 {
+        font-size: 4vh;
+    }
+    .text-content p {
+        font-size: 2.2vh;
+    }
+}
+
+@media (max-width: 992px) {
+    .text-content h1 {
+        font-size: 3.5vh;
+    }
+    .text-content p {
+        font-size: 2.0vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .text-content h1 {
+        font-size: 3vh;
+    }
+    .text-content p {
+        font-size: 1.6vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .text-content h1 {
+        font-size: 2.5vh;
+    }
+    .text-content p {
+        font-size: 1.4vh;
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.menu-item {
+    margin-right: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.menu-items {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    color: #000000;
+}
+
+.bottom-line1 {
+    display: none;
+    position: relative;
+}
+
+.sort {
+    margin-left: auto;
+    position: relative;
+}
+
+.bottom-line {
+    position: sticky;
+    width: 78%;
+    margin: 0 auto;
+    border-bottom: 2px solid #000;
+    margin-top: 0px;
+}
+
+@media (max-width: 768px) {
+    .menu-items {
+        display: none;
+    }
+    .bottom-line1 {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-item {
+        display: none;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu,
+    .sort {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .sort {
+        margin-top: 10px;
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .menu,
+    .sort {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.menu-items a {
+    position: relative;
+    padding-right: 25px;
+    /* Місце для іконки */
+}
+
+.sort {
+    margin-left: auto;
+    position: relative;
+    padding-right: px;
+    /* Місце для іконки */
+}
+
+.menu-items a {
+    color: black;
+    text-decoration: none;
+}
+
+.menu-items a:hover {
+    color: black;
+}
+
+.sort a {
+    color: black;
+    text-decoration: none;
+}
+
+.sort a:hover {
+    color: black;
+}
+
+.navbar1 {
+    background-color: #000000;
+    overflow: hidden;
+}
+
+.tooltip1 {
+    visibility: hidden;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+
+/* Modal styling */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    right: 0;
+    top: 0;
+    width: 45%;
+    /* Width of 45% */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 0;
+    /* No margin */
+    padding: 20px;
+    border: 1px solid #888;
+    height: 100%;
+    /* Full height */
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Cart item styling */
+
+.cart-item {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    /* Додано новий клас */
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    /* Space between buttons */
+}
+
+.continue-shopping {
+    /* Додано новий клас */
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkout {
+    /* Додано новий клас */
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+.refine {
+    color: black;
+    position: relative;
+    padding-right: 25px;
+    /* Місце для іконки */
+    text-decoration: none;
+}
+
+.refine i {
+    font-size: 1.35em;
+}
+
+.refine a {
+    color: black;
+    text-decoration: none;
+    margin-left: 13%;
+}
+
+.refine a:hover {
+    color: black;
+}
+
+
+/* Blur overlay */
+
+#blur-overlay {
+    /* ADD */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 55%;
+    /* 55% width */
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    backdrop-filter: blur(10px);
+    /* Blur effect */
+    z-index: 1;
+    display: none;
+    /* Hidden by default */
+}
+
+.bottom-line2 {
+    border: 0;
+    border-top: 1px solid #ffffff;
+    margin-top: 97%;
+    margin-bottom: 20px;
+}
+
+.sort {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sort i {
+    font-size: 1.35em;
+    /* Збільшуємо розмір іконки */
+}
+
+
+/* Стилі модального вікна */
+
+
+/* Стиль для модального вікна */
+
+.popup {
+    position: fixed;
+    display: none;
+    z-index: 2;
+    width: 100%;
+    background-color: #fefefe;
+    border: 0px solid #ffffff;
+    padding: 20px;
+    text-align: right;
+    /* Додаємо вирівнювання тексту по правому краю */
+}
+
+.popup-content {
+    position: relative;
+}
+
+.popup-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.popup-close:hover,
+.popup-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.blur-overlay1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 52%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.sort {
+    display: inline-flex;
+    align-items: center;
+    position: -webkit-sticky;
+    /* For Safari */
+    position: sticky;
+}
+
+.sort a {
+    display: flex;
+    align-items: center;
+}
+
+.sort i {
+    font-size: 1.35em;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+
+/* Стиль для нижньої чорної лінії */
+
+.bottom-line {
+    width: 80%;
+    height: 0;
+    background-color: black;
+    position: -webkit-sticky;
+    /* For Safari */
+    position: sticky;
+}
+
+@media (max-width: 480px) {
+    .bottom-line {
+        width: 100%;
+        height: 0;
+        background-color: black;
+        position: -webkit-sticky;
+        /* For Safari */
+        position: sticky;
+    }
+}
+
+
+/* Медіа-запит для приховування іконок на екранах менше 480px */
+
+@media (max-width: 480px) {
+    .sort i {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .blur-overlay1 {
+        display: none;
+        position: relative;
+        z-index: 1;
+        left: 0;
+        top: 60%;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.bx-rotate-180 {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+
+/* Додаємо чорний фон для квадратика, чорну обводку та білу галочку */
+
+.sort-options input[type="checkbox"] {
+    width: 15px;
+    /* Збільшено розмір чекбоксів */
+    height: 15px;
+    /* Збільшено розмір чекбоксів */
+    margin-right: 10px;
+    background-color: black;
+    /* Робимо фон чекбоксу чорним */
+    accent-color: white;
+    /* Робимо галочку білою */
+}
+
+
+/* Забезпечуємо вирівнювання тексту справа від квадратика */
+
+.sort-options label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: black;
+    /* Додаємо чорний колір тексту */
+    margin-left: 80%;
+}
+
+@media (max-width: 1200px) {
+    .sort-options label {
+        margin-left: 80%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .sort-options label {
+        margin-left: 80%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .sort-options label {
+        margin-left: 79%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .sort-options label {
+        margin-left: 79%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .sort-options label {
+        margin-left: 77%;
+    }
+}
+
+@media (max-width: 950px) {
+    .sort-options label {
+        margin-left: 77%;
+    }
+}
+
+@media (max-width: 900px) {
+    .sort-options label {
+        margin-left: 75%;
+    }
+}
+
+@media (max-width: 850px) {
+    .sort-options label {
+        margin-left: 75%;
+    }
+}
+
+@media (max-width: 800px) {
+    .sort-options label {
+        margin-left: 73%;
+    }
+}
+
+@media (max-width: 750px) {
+    .sort-options label {
+        margin-left: 73%;
+    }
+}
+
+@media (max-width: 700px) {
+    .sort-options label {
+        margin-left: 71%;
+    }
+}
+
+@media (max-width: 650px) {
+    .sort-options label {
+        margin-left: 70%;
+    }
+}
+
+@media (max-width: 600px) {
+    .sort-options label {
+        margin-left: 68%;
+    }
+}
+
+@media (max-width: 550px) {
+    .sort-options label {
+        margin-left: 68%;
+    }
+}
+
+@media (max-width: 500px) {
+    .sort-options label {
+        margin-left: 66%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sort-options label {
+        margin-left: 64%;
+    }
+}
+
+
+/*REFINE*/
+
+
+/* Модальне вікно */
+
+.refine {
+    text-align: center;
+}
+
+.refine a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#refineIcon {
+    margin-left: 5px;
+    /* Відступ між текстом і іконкою */
+}
+
+.modal-content2 {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.modal-header {
+    padding: 0px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.modal-close2 {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-close2:hover,
+.modal-close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.refine-category {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.refine-category i {
+    margin-left: 0%;
+    /* Відступ від тексту */
+    font-size: 1.35em;
+    /* Розмір іконки */
+    margin-right: 10px;
+}
+
+.refine-category h5 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    text-align: left;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.black-line1,
+.black-line2,
+.black-line3 {
+    width: 80%;
+    height: 0.5px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+.refine-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+    #refineIcon {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .refine-category i {
+        margin-left: 0;
+        /* Відступ від тексту */
+        font-size: 1.35em;
+        /* Розмір іконки */
+        display: none;
+    }
+    .refine-toggle h5 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .black-line1,
+    .black-line2 {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 480px) {
+    .black-line1,
+    .black-line2 {
+        width: 75%;
+    }
+    .refine-category i {
+        margin-left: right;
+        /* Вирівнюємо іконки праворуч */
+        /* Відступ від тексту */
+        font-size: 1.35em;
+        /* Розмір іконки */
+        text-align: right;
+    }
+    .refine-category h5 {
+        margin-left: 15%;
+    }
+    #icon1 {
+        margin-left: 68%;
+    }
+    #icon2 {
+        margin-left: 65%;
+    }
+    #icon3 {
+        margin-left: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .refine-toggle {
+        justify-content: center;
+    }
+}
+
+
+/*Катигорії*/
+
+.refine-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.refine-toggle:hover {
+    color: #0088ff;
+    /* Зміна кольору при наведенні */
+}
+
+.category-content {
+    display: none;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    /* Додатковий відступ, щоб контент не прилинав до лінії */
+}
+
+.refine-category i {
+    transition: transform 0.3s ease;
+}
+
+.refine-category i.rotate {
+    transform: rotate(1deg);
+}
+
+.black-line1,
+.black-line2,
+.black-line3 {
+    width: 80%;
+    height: 0.5px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+.menu-item {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.menu-item .line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s;
+}
+
+.menu-item:hover .line {
+    width: 100%;
+}
+
+.refine-content {
+    position: relative;
+}
+
+
+/* Меню айтемс */
+
+.menu-items {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0px;
+    gap: 0px;
+    /* Додаємо відстань між пунктами меню */
+}
+
+.menu-item {
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    /* Забезпечує, щоб текст не переходив на новий рядок */
+    padding: 5px 1px;
+    /* Зменшуємо відступи всередині пунктів меню */
+}
+
+.menu-item:hover {
+    cursor: pointer;
+}
+
+.menu-item i {
+    margin-left: 5px;
+    font-size: 1.35em;
+}
+
+
+/* Медіа-запит для приховування іконок на екранах менше 480px */
+
+@media (max-width: 480px) {
+    .menu-item {
+        white-space: nowrap;
+    }
+    .menu-item i {
+        display: inline-block;
+        /* Залишаємо іконки на місці */
+    }
+}
+
+
+/* Інші стилі */
+
+
+/* Стиль для модального вікна */
+
+.category-content label,
+.type-optionsq label {
+    display: block;
+    margin-bottom: 10px;
+    /* Можна налаштувати відстань між чекбоксами */
+}
+
+.popupq {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 20px;
+    text-align: right;
+    /* Додаємо вирівнювання тексту по правому краю */
+}
+
+.popup-content3 {
+    position: relative;
+}
+
+.popup-close3 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.popup-close3:hover,
+.popup-close3:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.blur-overlay001 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 52%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.bx-rotate-180 {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.sort-options input[type="checkbox"],
+.category-optionsq input[type="checkbox"],
+.type-optionsq input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border: 2px solid black;
+    background-color: black;
+    accent-color: white;
+}
+
+.sort-options label,
+.category-optionsq label,
+.type-optionsq label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.slider-wrapper {
+    width: 50vw;
+    margin-left: 30px;
+    margin-top: 20px;
+    transition: width 0.5s ease-in-out;
+}
+
+.slider {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.slide {
+    width: 300px;
+    height: 300px;
+    margin-right: 20px;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 1500px) {
+    .category-optionsq label {
+        margin-left: 14%;
+    }
+}
+
+@media (max-width: 1450px) {
+    .category-optionsq label {
+        margin-left: 14%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .category-optionsq label {
+        margin-left: 14%;
+    }
+}
+
+@media (max-width: 1350px) {
+    .category-optionsq label {
+        margin-left: 14%;
+    }
+}
+
+@media (max-width: 1300px) {
+    .category-optionsq label {
+        margin-left: 14%;
+    }
+}
+
+@media (max-width: 1250px) {
+    .category-optionsq label {
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .category-optionsq label {
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .category-optionsq label {
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .category-optionsq label {
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .category-optionsq label {
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .category-optionsq label {
+        margin-left: 16%;
+    }
+}
+
+@media (max-width: 950px) {
+    .category-optionsq label {
+        margin-left: 16%;
+    }
+}
+
+@media (max-width: 900px) {
+    .category-optionsq label {
+        margin-left: 16%;
+    }
+}
+
+@media (max-width: 850px) {
+    .category-optionsq label {
+        margin-left: 16%;
+    }
+}
+
+@media (max-width: 800px) {
+    .category-optionsq label {
+        margin-left: 17%;
+    }
+}
+
+@media (max-width: 750px) {
+    .category-optionsq label {
+        margin-left: 17%;
+    }
+}
+
+@media (max-width: 700px) {
+    .category-optionsq label {
+        margin-left: 17%;
+    }
+}
+
+
+/* ДЛЯ SORT */
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.sort {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sort i {
+    font-size: 1.35em;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    /* Анімація повороту */
+}
+
+.sort i.rotated {
+    transform: rotate(180deg);
+    /* Поворот на 180 градусів */
+}
+
+.popup4 {
+    display: none;
+    position: fixed;
+    /* Зміна з absolute на fixed */
+    left: 0;
+    width: 100%;
+    /* Ширина вікна на 100% */
+    background-color: #fefefe;
+    border-top: 1px solid #ffffff;
+    /* Білий верхній бордер */
+    padding: 20px;
+    text-align: right;
+    z-index: 2;
+}
+
+.popup-content4 {
+    position: relative;
+}
+
+.blur-overlay1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 60%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.bottom-line {
+    border: 0;
+    border-top: 1px solid #000000;
+    margin-bottom: 20px;
+}
+
+.sort-options {
+    margin-top: 10px;
+}
+
+
+/* PR */
+
+body {
+    font-family: 'Arial', sans-serif;
+    /* Заміна на більш читабельний шрифт */
+    font-size: 1.2em;
+    /* Можна трохи збільшити, якщо потрібно */
+    background-color: #ffffff;
+    /* Білий фон */
+    color: #333333;
+    /* Темний сірий колір тексту для кращого контрасту */
+    text-shadow: none;
+    /* Прибрати текстову тінь для чистішого вигляду */
+    letter-spacing: normal;
+    /* Звичайний інтервал між буквами */
+    line-height: 1.6;
+    /* Трохи більший міжрядковий інтервал для зручності читання */
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    color: #000b80;
+    /* Колір тексту Zero */
+    font-weight: bold;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.product {
+    flex-basis: calc(33.33% - 20px);
+    /* 33.33% для трьох в рядок */
+    max-width: calc(33.33% - 20px);
+    /* 33.33% для трьох в рядок */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Зображення зі збільшенням при наведенні */
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+}
+
+.product:hover img {
+    transform: scale(1.05);
+}
+
+.product h3 {
+    font-size: 0.9em;
+    color: #000000;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+
+.price {
+    color: #800073;
+    /* Наприклад, помаранчевий колір */
+    font-weight: bold;
+    /* Зробити текст жирним */
+    font-size: 1.5em;
+    /* Збільшити розмір тексту, якщо потрібно */
+}
+
+.product-info p {
+    font-size: 0.8em;
+    color: #666;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* Стиль для тексту Zero */
+
+.menu-item.zero {
+    font-family: 'Playfair Display', serif;
+    /* Використовуємо більш елегантний шрифт */
+    font-size: 30px;
+    /* Збільшений розмір шрифту для чіткості */
+    color: #000;
+    /* Чорний основний текст */
+    position: relative;
+    display: inline-block;
+    letter-spacing: 2px;
+    /* Трохи збільшена відстань між літерами */
+    text-transform: uppercase;
+    text-shadow: 3px 3px 5px rgba(100, 100, 100, 0.5);
+    /* Світла тінь для глибини */
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+
+/* Глітч-ефект */
+
+.menu-item.zero:hover::before {
+    left: 2px;
+    top: 2px;
+}
+
+.menu-item.zero:hover::after {
+    left: -2px;
+    top: -2px;
+}
+
+
+/* Відступи для першого, другого і третього продуктів */
+
+.product:nth-child(3n+1) {
+    margin-left: 0;
+}
+
+.product:nth-child(3n+3) {
+    margin-right: 0;
+}
+
+
+/* Медіа-запити для різних розмірів екранів */
+
+@media (max-width: 768px) {
+    .product {
+        flex-basis: calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+    .product:nth-child(2n+1) {
+        margin-left: 0;
+    }
+    .product:nth-child(2n+2) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .product {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.price {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+}
+
+.rating i {
+    color: #000000;
+    /* Червоний колір для сердець */
+    font-size: 24px;
+    margin: 0 2px;
+}
+
+
+/* Адаптивність на екранах 600px і менше */
+
+@media (max-width: 600px) {
+    .product {
+        flex-basis: 100%;
+        /* Кожен елемент займає всю ширину контейнера */
+    }
+}
+
+
+/* Адаптивність на екранах від 601px до 1000px */
+
+@media (min-width: 601px) and (max-width: 1000px) {
+    .product {
+        flex-basis: 50%;
+        /* Два продукти в рядок */
+    }
+}
+
+
+/* Адаптивність на екранах більше 1000px */
+
+@media (min-width: 1001px) {
+    .product {
+        flex-basis: 33.33%;
+        /* Три продукти в рядок */
+    }
+}
+
+
+/*Refine*/
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.menu-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.menu-item i {
+    font-size: 1.35em;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-item i.rotated {
+    transform: rotate(180deg);
+}
+
+.popupq {
+    display: none;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: #fefefe;
+    border-top: 1px solid #ffffff;
+    padding: 20px;
+    text-align: right;
+    z-index: 2;
+}
+
+.blur-overlay001 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 55%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.bottom-line {
+    border: 0;
+    border-top: 1px solid #000000;
+    margin-bottom: 20px;
+}
+
+.category-optionsq,
+.type-optionsq,
+.collection-optionsq {
+    margin-top: 10px;
+}
+
+
+/*Уточнити*/
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.refine a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.refine a i {
+    font-size: 1.35em;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.refine a i.rotated {
+    transform: rotate(180deg);
+}
+
+.modal-content2 {
+    display: none;
+    position: absolute;
+    /* Змінено з fixed на absolute */
+    left: 0;
+    width: 100%;
+    background-color: #fefefe;
+    border-top: 1px solid #ffffff;
+    z-index: 2;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow: hidden;
+    /* Забороняємо загальну прокрутку */
+}
+
+
+/* Блюр */
+
+
+/* Попап */
+
+.custom-blur-overlay {
+    display: none;
+    position: fixed;
+    top: 62%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    /* Нижче модального вікна */
+}
+
+.modal-content2 {
+    z-index: 999;
+    /* Вікно вище блюра */
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+@media (min-width: 769px) {
+    #refinePopup1,
+    #custom-blur-overlay {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .custom-blur-overlay {
+        display: none !important;
+    }
+}
+
+.bottom-line {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.category-content,
+.collection-content {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .category-content#categoryContent2 {
+        max-height: 10vh;
+        /* Максимальна висота для контенту "Тип товару" */
+        overflow-y: auto;
+        /* Вертикальна прокрутка для контенту "Тип товару" */
+    }
+}
+
+@media (max-width: 480px) {
+    .bottom-line {
+        width: 100%;
+        height: 0;
+        background-color: black;
+        position: -webkit-sticky;
+        /* For Safari */
+        position: sticky;
+        top: 0;
+    }
+    .modal-content2 {
+        max-height: 80vh;
+        /* Максимальна висота вікна на мобільних пристроях */
+    }
+    .category-content#categoryContent2 {
+        max-height: 10vh;
+        /* Максимальна висота для контенту "Тип товару" на мобільних пристроях */
+        overflow-y: auto;
+        /* Вертикальна прокрутка для контенту "Тип товару" на мобільних пристроях */
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-items {
+        flex-direction: column;
+    }
+    .menu-item {
+        display: none;
+    }
+}
+
+
+/* При ширині більше 768px */
+
+@media (min-width: 769px) {
+    .menu-item {
+        display: inline-block;
+    }
+}
+
+
+/* Основне меню */
+
+.menu-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    margin: 0;
+    padding: 0 5px;
+    /* Мінімальні відступи */
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    /* Плавний перехід */
+}
+
+
+/* Для мобільних пристроїв */
+
+@media (max-width: 1024px) {
+    .menu-items {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+/* Додаткові стилі для мобільних пристроїв */
+
+@media (max-width: 800px) {
+    /* Змінено з 768px на 800px */
+    .menu-items {
+        justify-content: flex-start;
+        /* Вирівнювання елементів до початку */
+    }
+    .menu-item {
+        padding: 0 5px;
+        /* Відсутність змін у відступах */
+        font-size: 16px;
+        /* Той самий розмір шрифту */
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-item.zero {
+        display: none !important;
+        /* Важливий пріоритет для зникнення елемента */
+    }
+}
+
+.popupq,
+.modal-content2,
+.popup {
+    display: none;
+    /* Інші стилі для модальних вікон */
+}
+
+.blur-overlay001,
+.custom-blur-overlay,
+.blur-overlay1 {
+    display: none;
+    /* Інші стилі для блюр-оверлеїв */
+}
+
+.popupq.active,
+.modal-content2.active,
+.popup.active {
+    display: block;
+}
+
+.blur-overlay001.active,
+.custom-blur-overlay.active,
+.blur-overlay1.active {
+    display: block;
+}
+
+
+/* Контейнер для рейтингу і тексту */
+
+.title-rating {
+    display: flex;
+    flex-direction: column;
+    /* Встановлюємо вертикальне розташування */
+    align-items: center;
+    /* Вирівнюємо серця по центру */
+    margin-left: 10px;
+    /* Відступ зліва */
+}
+
+
+/* Стиль для тексту під картинкою */
+
+.product-title {
+    font-size: 20px;
+    font-weight: bold;
+    /* Робимо текст жирним */
+    color: #000000;
+    margin: 5px 0 0 0;
+    /* Відступи для тексту */
+    text-align: center;
+    /* Вирівнюємо назву товару по лівому краю */
+    width: 100%;
+    /* Забезпечуємо тексту повну ширину для вирівнювання зліва */
+    text-transform: uppercase;
+    text-shadow: 3px 3px 5px rgba(100, 100, 100, 0.5);
+    /* Світла тінь для глибини */
+}
+
+
+/* Стиль для контейнера з ціною та рейтингом */
+
+.product-info {
+    display: flex;
+    justify-content: center;
+    /* Вирівнюємо ціну по центру */
+    align-items: center;
+    /* Вирівнюємо по вертикалі */
+}
+
+
+/* Стиль для ціни */
+
+.price {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+    /* Центрування ціни */
+}
+
+
+/* Стиль для рейтингу */
+
+.rating {
+    display: flex;
+    justify-content: center;
+    /* Вирівнюємо рейтинг по центру */
+    margin-bottom: 5px;
+    /* Відступ знизу між рейтингом і текстом */
+}
+
+.rating i {
+    color: #000000;
+    /* Червоний колір для сердець */
+    font-size: 20px;
+    margin-right: 1px;
+    /* Відступ між іконками */
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    width: 30%;
+    /* Кожен продукт займає 30% ширини контейнера */
+    margin-bottom: 20px;
+    /* Відступ між продуктами */
+    border: 1px solid transparent;
+    /* Прозора рамка за замовчуванням */
+    transition: border-color 0.3s ease;
+    /* Плавний перехід для рамки */
+    border-radius: 10;
+}
+
+.product:hover {
+    border-color: #000000;
+    /* Чорна рамка при наведенні */
+    border-radius: 10;
+}
+
+
+/* Додаємо відступ справа для перших продуктів у кожному рядку, коли їх три в рядку */
+
+.product-container .product:nth-child(3n+1) {
+    margin-left: 5px;
+}
+
+
+/* Коли два продукти в рядку */
+
+@media (max-width: 800px) {
+    .product {
+        width: 48%;
+        /* Два продукти в рядку */
+    }
+    /* Додаємо відступ зліва для першого продукту в кожному рядку */
+    .product-container .product:nth-child(2n+1) {
+        margin-left: 5px;
+    }
+    /* Забираємо відступ справа у другого продукту */
+    .product-container .product:nth-child(2n) {
+        margin-right: 0;
+    }
+}
+
+
+/* Коли один продукт у рядку */
+
+@media (max-width: 500px) {
+    .product {
+        width: 100%;
+        /* Один продукт в рядку */
+        margin-left: 5px;
+        /* Відступ зліва */
+    }
+}
+
+.image-flip {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    /* Співвідношення сторін 1:1 для квадратного зображення */
+}
+
+.image-flip img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    /* Зберігає пропорції зображення, заповнюючи весь контейнер */
+    transform-origin: center;
+    /* Зберігає центрування під час масштабування */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Плавний перехід для зміни зображень і масштабу */
+}
+
+.image-flip .front {
+    transform: scale(0.7) translateX(25px);
+    /* Робимо перше зображення трохи більшим і зміщуємо його на 10px вправо */
+}
+
+.image-flip .back {
+    opacity: 0;
+    /* Задня картинка невидима за замовчуванням */
+    transform: scale(0.8);
+    /* Заднє зображення трохи більше (80% від початкового розміру) */
+}
+
+.product:hover .image-flip .front {
+    opacity: 0;
+    /* При наведенні передня картинка стає невидимою */
+}
+
+.product:hover .image-flip .back {
+    opacity: 1;
+    /* При наведенні задня картинка стає видимою */
+    transform: scale(0.8);
+    /* Заднє зображення залишається трохи більшим */
+}
+
+.product {
+    border: none;
+    /* Відсутність рамки */
+    transition: box-shadow 0.3s ease;
+    /* Плавний перехід для тіні */
+}
+
+.product:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    /* Об'ємна тінь при наведенні */
+}
+
+
+/* Для відступу справа, коли три продукти в рядку */
+
+.product {
+    width: 30%;
+    margin-bottom: 20px;
+    /* Відступ між рядками продуктів */
+    transition: box-shadow 0.3s ease;
+    /* Плавний перехід для тіні */
+}
+
+
+/* Додаємо відступ справа для кожного продукту, крім останнього в ряду */
+
+.product-container .product:not(:nth-child(3n)) {
+    margin-right: 5px;
+    /* Відступ справа для продуктів у рядку */
+}
+
+
+/* Додаємо відступ справа для третього продукту (останнього в рядку з трьома продуктами) */
+
+.product-container .product:nth-child(3n) {
+    margin-right: 5px;
+}
+
+
+/* Коли два продукти в рядку (для ширини екрану менше 768px) */
+
+@media (max-width: 768px) {
+    .product {
+        width: 48%;
+        /* Два продукти в рядку */
+    }
+    /* Додаємо відступ справа для першого продукту */
+    .product-container .product:not(:nth-child(2n)) {
+        margin-right: 5px;
+    }
+    /* Убираємо відступ у другого продукту */
+    .product-container .product:nth-child(2n) {
+        margin-right: 0;
+    }
+}
+
+
+/* Один продукт в рядку (для ширини екрану менше 500px) */
+
+@media (max-width: 500px) {
+    .product {
+        width: 100%;
+        /* Один продукт в рядку */
+        margin-right: 0;
+        /* При одному продукті відступ справа не потрібен */
+    }
+}
+
+
+/* Для відступу справа, коли три продукти в рядку */
+
+.product {
+    width: 30%;
+    margin-bottom: 20px;
+    /* Відступ між рядками продуктів */
+    transition: box-shadow 0.3s ease;
+    /* Плавний перехід для тіні */
+}
+
+
+/* Додаємо відступ справа для кожного продукту, крім останнього в ряду */
+
+.product-container .product:not(:nth-child(3n)) {
+    margin-right: 5px;
+    /* Відступ справа для продуктів у рядку */
+}
+
+
+/* Коли два продукти в рядку (для ширини екрану менше 768px) */
+
+@media (max-width: 768px) {
+    .product {
+        width: 48%;
+        /* Два продукти в рядку */
+    }
+    /* Додаємо відступ справа для першого продукту */
+    .product-container .product:not(:nth-child(2n)) {
+        margin-right: 5px;
+    }
+}
+
+
+/* Один продукт в рядку (для ширини екрану менше 500px) */
+
+@media (max-width: 500px) {
+    .product {
+        width: 100%;
+        /* Один продукт в рядку */
+        margin-right: 0;
+        /* При одному продукті відступ справа не потрібен */
+    }
+}
+
+.sorting-system {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    border-bottom: 1px solid #000;
+    position: relative;
+    z-index: 1;
+}
+
+.sorting-item {
+    display: inline-block;
+    position: relative;
+}
+
+.sorting-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.sorting-title {
+    cursor: pointer;
+}
+
+.fas {
+    margin-right: 10px;
+}
+
+.sorting-list {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    /* Центруємо відносно кнопки */
+    transform: translateX(-50%);
+    /* Вирівнюємо */
+    width: 200px;
+    /* Задаємо ширину 80% */
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #000000;
+    z-index: 2;
+    animation: fadeIn 0.3s ease-out;
+    /* Анімація появи списку */
+}
+
+.sorting-item:last-child .sorting-list {
+    right: 0;
+    /* Правий список буде вирівняний до краю */
+    left: auto;
+    transform: none;
+    /* Скидаємо вирівнювання */
+}
+
+.sorting-list li {
+    padding: 5px;
+    border-bottom: 1px solid #000000;
+    text-align: center;
+    /* Текст у списках по центру */
+    opacity: 0;
+    /* Спочатку текст прихований */
+    animation: textFadeIn 0.5s ease-in-out forwards;
+    /* Анімація появи тексту */
+    animation-delay: 0.2s;
+    /* Затримка для тексту */
+}
+
+.sorting-list li:last-child {
+    border-bottom: none;
+}
+
+.sorting-item:last-child .sorting-list {
+    right: 0;
+    /* Розташування праворуч */
+    left: auto;
+    transform: translateX(20%);
+    /* Трохи правіше */
+}
+
+.sorting-list.show {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.sorting-list li.show {
+    opacity: 1;
+    /* Робимо текст видимим */
+    animation: textFadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        /* Починається з прозорості */
+    }
+    to {
+        opacity: 1;
+        /* Стає повністю видимим */
+    }
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+        /* Початкова прозорість */
+    }
+    to {
+        opacity: 1;
+        /* Плавне відображення тексту */
+    }
+}
+
+.sorting-list li.active {
+    text-decoration: underline;
+    /* Підкреслення активного елемента */
+    color: #000000;
+    /* Змінюємо колір для виділення */
+    cursor: pointer;
+    /* Робимо зрозумілим, що це інтерактивний елемент */
+}
+
+.sorting-list li:hover {
+    color: #000000;
+    /* Підсвічування при наведенні */
+}
+
+@media (max-width: 600px) {
+    .sorting-system {
+        display: flex;
+        flex-direction: column;
+        /* Розташування елементів вертикально */
+        align-items: center;
+        /* Вирівнювання елементів по центру */
+    }
+    .sorting-item {
+        width: 100%;
+        /* Розтягнути на всю ширину */
+        text-align: center;
+        /* Текст всередині по центру */
+        padding-bottom: 10px;
+        /* Додати відступи знизу */
+        margin-bottom: 10px;
+        /* Відступ між елементами */
+        position: relative;
+        /* Встановлюємо відносне позиціонування для батьківського контейнера */
+    }
+    .sorting-item:last-child {
+        border-bottom: none;
+        /* Убрати чорну лінію під останнім елементом (Сортування) */
+        margin-left: 35px;
+    }
+    .sorting-button {
+        width: auto;
+        /* Кнопки займають мінімальну ширину */
+        text-align: center;
+        /* Текст у кнопках по центру */
+    }
+    .sorting-title {
+        font-size: 18px;
+        /* Трохи зменшити розмір тексту */
+    }
+    .sorting-list {
+        display: none;
+        /* Приховуємо список за замовчуванням */
+        position: relative;
+        /* Абсолютне позиціонування для списку */
+        top: 100%;
+        /* Відображення прямо під кнопкою */
+        left: 50%;
+        /* Вирівнювання відносно кнопки */
+        transform: translateX(-50%);
+        /* Центруємо список горизонтально */
+        width: 80%;
+        /* Робимо список шириною 80% */
+        background-color: #fff;
+        /* Білий фон */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        /* Додаємо тінь */
+        padding: 10px;
+        z-index: 10;
+        /* Забезпечуємо, щоб список був поверх інших елементів */
+    }
+    .sorting-list li {
+        padding: 8px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .sorting-list li:hover {
+        background-color: #f0f0f0;
+        /* Ефект при наведенні */
+    }
+}
+
+.rating i {
+    display: inline-block;
+    transition: transform 0.5s ease, color 0.5s ease;
+    color: #000000;
+    cursor: pointer;
+}
+
+.rating:hover i {
+    transform: scale(1.3) rotate(10deg);
+    color: #e63946;
+    animation: pulse 0.6s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.3) rotate(10deg);
+    }
+    100% {
+        transform: scale(1.5) rotate(-10deg);
+    }
+}
+
+.rating i.active {
+    color: #000;
+    /* Чорний колір при натисканні */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+footer {
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(to right, #000000, #1b1b1b);
+    color: #fff;
+    padding: 100px 0 30px;
+    border-top-left-radius: 125px;
+    margin-top: 25px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.row {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.col {
+    flex-basis: 25%;
+    padding: 10px;
+}
+
+.col:nth-child(2),
+.col:nth-child(3) {
+    flex-basis: 15%;
+}
+
+.logo {
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.logo h1 {
+    color: white;
+}
+
+.col h3 {
+    width: fit-content;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.email-id {
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+ul li {
+    list-style: none;
+    margin-bottom: 12px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+form {
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 50px;
+}
+
+form .far {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+form input {
+    width: 100%;
+    background: transparent;
+    color: #ccc;
+    border: 0;
+    outline: none;
+}
+
+form button {
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+form button .fas {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.social-icons .fab {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #000;
+    background: #fff;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+hr {
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+}
+
+.copyright {
+    text-align: center;
+}
+
+.underline {
+    width: 100%;
+    height: 5px;
+    background: #767676;
+    border-radius: 3px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    overflow: hidden;
+}
+
+.underline span {
+    width: 15px;
+    height: 100%;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    animation: moving 2s linear infinite;
+}
+
+@keyframes moving {
+    0% {
+        left: -20px;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@media (max-width:700px) {
+    footer {
+        bottom: unset;
+    }
+    .col {
+        flex-basis: 100%;
+    }
+    .col:nth-child(2),
+    .col:nth-child(3) {
+        flex-basis: 100%;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* Підключення шрифту */
+
+.noir-text {
+    font-family: 'Playfair Display', serif;
+    /* Схожий шрифт */
+    font-size: 50px;
+    /* Розмір тексту */
+    font-weight: 500;
+    /* Товщина */
+    color: #ffffff;
+    /* Темно-коричневий колір */
+    text-align: center;
+    /* Центрування (за бажанням) */
+    margin: 20px;
+}

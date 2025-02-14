@@ -1,0 +1,947 @@
+/*=============== GOOGLE FONTS ===============*/
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+
+:root {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Montserrat Alternates", sans-serif;
+    --h1-font-size: 1.5rem;
+    --normal-font-size: .938rem;
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-medium: 500;
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+
+/*========== Responsive typography ==========*/
+
+@media screen and (min-width: 1150px) {
+     :root {
+        --normal-font-size: 1rem;
+    }
+}
+
+
+/*=============== BASE ===============*/
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--white-color);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.container {
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
+
+
+/*=============== HEADER & NAV ===============*/
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--black-color);
+    z-index: var(--z-fixed);
+}
+
+.nav {
+    position: relative;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1450px;
+    min-height: 110px;
+}
+
+.nav__logo {
+    color: var(--white-color);
+    font-weight: var(--font-medium);
+}
+
+.nav__close,
+.nav__toggle {
+    display: flex;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+/* Navigation for mobile devices */
+
+@media screen and (max-width: 1150px) {
+    .nav__menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        background-color: var(--black-color);
+        width: 100%;
+        height: 100%;
+        padding: 6rem 3.5rem 4.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: left .4s;
+    }
+    .nav__item {
+        transform: translateX(-150px);
+        visibility: hidden;
+        transition: transform .4s ease-out, visibility .4s;
+    }
+    .nav__item:nth-child(1) {
+        transition-delay: .1s;
+    }
+    .nav__item:nth-child(2) {
+        transition-delay: .2s;
+    }
+    .nav__item:nth-child(3) {
+        transition-delay: .3s;
+    }
+    .nav__item:nth-child(4) {
+        transition-delay: .4s;
+    }
+    .nav__item:nth-child(5) {
+        transition-delay: .5s;
+    }
+}
+
+.nav__list,
+.nav__social {
+    display: flex;
+}
+
+.nav__list {
+    flex-direction: column;
+    row-gap: 3rem;
+    margin-right: 200px;
+}
+
+.nav__link {
+    position: relative;
+    color: var(--white-color);
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-medium);
+    display: inline-flex;
+    align-items: center;
+    transition: opacity .4s;
+}
+
+.nav__link i {
+    font-size: 2rem;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s, visibility .4s;
+}
+
+.nav__link span {
+    position: relative;
+    transition: margin .4s;
+}
+
+.nav__link span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background-color: var(--white-color);
+    transition: width .4s ease-out;
+}
+
+
+/* Animation link on hover */
+
+.nav__link:hover span {
+    margin-left: 2.5rem;
+}
+
+.nav__link:hover i {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav__link:hover span::after {
+    width: 100%;
+}
+
+
+/* Sibling fade animation */
+
+.nav__list:has(.nav__link:hover) .nav__link:not(:hover) {
+    opacity: .4;
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.nav__social {
+    column-gap: 1rem;
+}
+
+.nav__social-link {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    transition: transform .4s;
+}
+
+.nav__social-link:hover {
+    transform: translateY(-.25rem);
+}
+
+
+/* Show menu */
+
+.show-menu {
+    left: 0;
+}
+
+
+/* Animation link when displaying menu */
+
+.show-menu .nav__item {
+    visibility: visible;
+    transform: translateX(0);
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+
+
+/* For large devices */
+
+@media screen and (min-width: 1150px) {
+    .container {
+        margin-inline: auto;
+    }
+    .nav {
+        height: calc(var(--header-height) + 2rem);
+    }
+    .nav__toggle,
+    .nav__close {
+        display: none;
+    }
+    .nav__link {
+        font-size: var(--normal-font-size);
+    }
+    .nav__link i {
+        font-size: 1.5rem;
+    }
+    .nav__list {
+        flex-direction: row;
+        column-gap: 3.5rem;
+    }
+    .nav__menu {
+        display: flex;
+        align-items: center;
+        column-gap: 3.5rem;
+    }
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav__logo-img {
+    width: 250px;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .nav__logo-img {
+        width: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav__logo-img {
+        width: 150px;
+    }
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: -5px;
+    /* Shifted left by 50px */
+}
+
+.search-icon,
+.close-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.search-icon img,
+.close-icon img {
+    width: 26px;
+    height: 26px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    /* Changed to make it less round */
+    overflow: hidden;
+    width: 0;
+    height: 40px;
+    /* Increased height */
+    transition: width 0.5s ease;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: #000000;
+    color: #fff;
+    padding: 10px 10px;
+    width: 100%;
+    font-size: 16px;
+    /* Increased font size */
+}
+
+.search-bar .close-icon {
+    display: none;
+    margin: 0 10px;
+    /* Centering the icon */
+}
+
+.search-container.active .search-bar {
+    width: 210px;
+    /* Increased width */
+    border-color: #fff;
+}
+
+.search-container.active .search-bar .close-icon {
+    display: block;
+}
+
+.search-container.active .search-icon {
+    display: none;
+}
+
+.icon-bar {
+    display: flex;
+    gap: 0px;
+    margin-right: -40px;
+}
+
+
+/* Стилі для окремих іконок */
+
+.icon {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+/* Стилі для зображень іконок */
+
+.icon img {
+    width: 26px;
+    height: 26px;
+}
+
+
+/* Стилі для підказок (tooltip) */
+
+.tooltip {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+
+/* Показ підказок при наведенні */
+
+.search-icon:hover {
+    transform: translateY(-3px);
+    /* Збільшення і підняття іконки */
+}
+
+.search-icon {
+    transition: transform 0.3s ease;
+}
+
+.icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: translateY(-5px);
+}
+
+.tooltip,
+.tooltip1 {
+    display: none;
+    /* Припустимо, що ви використовуєте це для підказок, які не відображаються за замовчуванням */
+}
+
+.icon:hover .tooltip,
+.icon:hover .tooltip1 {
+    display: block;
+    /* Відображення підказки при наведенні, якщо це потрібно */
+}
+
+.hero-section {
+    position: relative;
+    height: 45vh;
+    background: url('/STYLEZERO/Картинки/19.png') no-repeat center top;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.text-content {
+    margin-left: 50px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-content h1 {
+    font-size: 4vh;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 2.2vh;
+    max-width: 500px;
+}
+
+
+/* Media queries for responsive text size */
+
+@media (max-width: 1200px) {
+    .text-content h1 {
+        font-size: 4vh;
+    }
+    .text-content p {
+        font-size: 2.2vh;
+    }
+}
+
+@media (max-width: 992px) {
+    .text-content h1 {
+        font-size: 3.5vh;
+    }
+    .text-content p {
+        font-size: 2.0vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .text-content h1 {
+        font-size: 3vh;
+    }
+    .text-content p {
+        font-size: 1.6vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .text-content h1 {
+        font-size: 2.5vh;
+    }
+    .text-content p {
+        font-size: 1.4vh;
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.menu-item {
+    margin-right: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.menu-items {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    color: #000000;
+}
+
+.bottom-line1 {
+    display: none;
+    position: relative;
+}
+
+.sort {
+    margin-left: auto;
+    position: relative;
+}
+
+.bottom-line {
+    position: sticky;
+    width: 78%;
+    margin: 0 auto;
+    border-bottom: 2px solid #000;
+    margin-top: 0px;
+}
+
+@media (max-width: 768px) {
+    .menu-items {
+        display: none;
+    }
+    .bottom-line1 {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-item {
+        display: none;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu,
+    .sort {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .sort {
+        margin-top: 10px;
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .menu,
+    .sort {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.menu-items a {
+    position: relative;
+    padding-right: 25px;
+    /* Місце для іконки */
+}
+
+.sort {
+    margin-left: auto;
+    position: relative;
+    padding-right: px;
+    /* Місце для іконки */
+}
+
+.menu-items a {
+    color: black;
+    text-decoration: none;
+}
+
+.menu-items a:hover {
+    color: black;
+}
+
+.sort a {
+    color: black;
+    text-decoration: none;
+}
+
+.sort a:hover {
+    color: black;
+}
+
+.navbar1 {
+    background-color: #000000;
+    overflow: hidden;
+}
+
+.tooltip1 {
+    visibility: hidden;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+
+/* Modal styling */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    right: 0;
+    top: 0;
+    width: 45%;
+    /* Width of 45% */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 0;
+    /* No margin */
+    padding: 20px;
+    border: 1px solid #888;
+    height: 100%;
+    /* Full height */
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Cart item styling */
+
+.cart-item {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    /* Додано новий клас */
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    /* Space between buttons */
+}
+
+.continue-shopping {
+    /* Додано новий клас */
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkout {
+    /* Додано новий клас */
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+.refine {
+    color: black;
+    position: relative;
+    padding-right: 25px;
+    /* Місце для іконки */
+    text-decoration: none;
+}
+
+.refine i {
+    font-size: 1.35em;
+}
+
+.refine a {
+    color: black;
+    text-decoration: none;
+    margin-left: 13%;
+}
+
+.refine a:hover {
+    color: black;
+}
+
+
+/* Blur overlay */
+
+#blur-overlay {
+    /* ADD */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 55%;
+    /* 55% width */
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    backdrop-filter: blur(10px);
+    /* Blur effect */
+    z-index: 1;
+    display: none;
+    /* Hidden by default */
+}
+
+.bottom-line2 {
+    border: 0;
+    border-top: 1px solid #ffffff;
+    margin-top: 97%;
+    margin-bottom: 20px;
+}
+
+
+/**/
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.blogs {
+    padding: 50px;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+    opacity: 0;
+    /* Початково приховано */
+    transform: translateY(20px);
+    /* Трохи зміщено вниз */
+    animation: fadeIn 1s ease-out forwards;
+    /* Анімація */
+}
+
+h1 {
+    margin-top: 10%;
+    font-size: 48px;
+    font-weight: bold;
+    margin-left: 3%;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 3%;
+}
+
+.bottom-line {
+    width: 95%;
+    height: 2px;
+    /* Товщина нижньої лінії */
+    background-color: #4a4a4a;
+    margin: 20px auto 0;
+    /* Вирівнюємо по центру */
+}
+
+
+/* Анімація появи */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blog-card {
+    display: flex;
+    max-width: 1200px;
+    /* Збільшено ширину */
+    height: 500px;
+    /* Збільшено висоту */
+    background-color: #1d1d1d;
+    color: white;
+    margin: 40px auto;
+    /* Додано більше відступу */
+}
+
+.blog-image {
+    flex: 1.3;
+    /* Збільшено ширину зображення */
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-content {
+    flex: 0.7;
+    padding: 40px;
+    /* Збільшено внутрішній відступ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blog-date {
+    font-size: 16px;
+    /* Трохи збільшено */
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.blog-title {
+    font-size: 28px;
+    /* Збільшено */
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.blog-description {
+    font-size: 18px;
+    /* Збільшено */
+    margin-bottom: 30px;
+    color: #a5a5a5;
+}
+
+.read-more {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    padding: 12px 24px;
+    /* Збільшено */
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 180px;
+}
+
+.read-more span {
+    font-size: 20px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* Підключення шрифту */
+
+.noir-text {
+    font-family: 'Playfair Display', serif;
+    /* Схожий шрифт */
+    font-size: 50px;
+    /* Розмір тексту */
+    font-weight: 500;
+    /* Товщина */
+    color: #ffffff;
+    /* Темно-коричневий колір */
+    text-align: center;
+    /* Центрування (за бажанням) */
+    margin: 20px;
+}

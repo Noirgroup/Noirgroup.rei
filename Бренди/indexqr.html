@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/stylesqr.css">
+
+    <title>Responsive navbar - Bedimcode</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="/STYLEZERO/Титульна сторінка/index0.html" class="nav__logo">
+                <div class="noir-text">Noir</div>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Магазин/indexxx.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Магазин</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Бренди/indexqr.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Бренди</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Чоловіки/indexqt.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Чоловіки</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Жінки/index.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Жінки</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="icon-bar">
+                    <div class="search-container">
+                        <button class="search-icon" onclick="toggleSearch()">
+                            <img src="/STYLEZERO/Картинки/search-regular-24.png" alt="Search">
+                        </button>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search...">
+                            <button class="close-icon" onclick="toggleSearch()">
+                                <img src="/STYLEZERO/Картинки/x-regular-24.png" alt="Close">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="icon" id="login-icon">
+                        <a href="/STYLEZERO/Особистий кабінет/Index11.html">
+                            <span class="tooltip">Увійти</span>
+                            <img src="/STYLEZERO/Картинки/user-regular-24.png" alt="Login Icon">
+                        </a>
+                    </div>
+
+                    <a href="/STYLEZERO/Жінки/wishlist.html" class="icon" id="wishlist-icon">
+                        <span class="tooltip">Список бажань</span>
+                        <img src="/STYLEZERO/Картинки/heart-regular-24.png" alt="Wishlist Icon">
+                    </a>
+
+                    <div class="navbar1">
+                        <div class="icon" id="cart-icon">
+                            <span class="tooltip1">Кошик</span>
+                            <img src="/STYLEZERO/Картинки/shopping-bag-regular-24.png" alt="Cart Icon">
+                        </div>
+                    </div>
+
+                    <div id="blur-overlay"></div>
+
+                    <div id="cart-modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close"><i class='bx bx-x bx-flashing bx-rotate-90' ></i></span>
+                            <h4><u>Shopping Bag</u></h4>
+                            <hr>
+
+                            <div class="bottom-line2"></div>
+                            <div class="buttons">
+                                <button class="continue-shopping">Continue Shopping</button>
+                                <button class="checkout">Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Close button -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-large-line"></i>
+                </div>
+
+                <div class="nav__social">
+                    <a href="https://www.instagram.com/" target="_blank" class="nav__social-link">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="blogs">
+        <h1>Бренди</h1>
+        <p>Насолоджуйтесь останніми новинами та історіями .</p>
+        <div class="bottom-line"></div>
+    </div>
+
+    <div class="blog-card">
+        <div class="blog-image">
+            <img src="/STYLEZERO/Картинки/pexels-photo-16350687.jpeg" alt="Зображення">
+        </div>
+        <div class="blog-content">
+            <p class="blog-date">Історія створення Nike / 25 січня 1964 </p>
+            <h2 class="blog-title">Вступ до «Nike: Історія успіху та інновацій»</h2>
+            <p class="blog-description">
+                Nike заснували Філ Найт і Білл Бауерман у 1964 році як компанію Blue Ribbon Sports.
+            </p>
+            <a href="#" class="read-more">
+                Читати далі <span>➝</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="assets/js/mainqr.js"></script>
+
+</body>
+
+</html>

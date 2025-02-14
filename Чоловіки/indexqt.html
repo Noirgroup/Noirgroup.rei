@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/stylesqt.css">
+
+    <title>Responsive navbar - Bedimcode</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="/STYLEZERO/Титульна сторінка/index0.html" class="nav__logo">
+                <div class="noir-text">Noir</div>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Меню/indexxx.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Магазин</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Бренди/indexqr.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Бренди</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Чоловіки/indexqt.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Чоловіки</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Жінки/index.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Жінки</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="icon-bar">
+                    <div class="search-container">
+                        <button class="search-icon" onclick="toggleSearch()">
+                            <img src="/STYLEZERO/Картинки/search-regular-24.png" alt="Search">
+                        </button>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search...">
+                            <button class="close-icon" onclick="toggleSearch()">
+                                <img src="/STYLEZERO/Картинки/x-regular-24.png" alt="Close">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="icon" id="login-icon">
+                        <a href="/STYLEZERO/Особистий кабінет/Index11.html">
+                            <span class="tooltip">Увійти</span>
+                            <img src="/STYLEZERO/Картинки/user-regular-24.png" alt="Login Icon">
+                        </a>
+                    </div>
+
+                    <a href="/STYLEZERO/Жінки/wishlist.html" class="icon" id="wishlist-icon">
+                        <span class="tooltip">Список бажань</span>
+                        <img src="/STYLEZERO/Картинки/heart-regular-24.png" alt="Wishlist Icon">
+                    </a>
+
+                    <div class="navbar1">
+                        <div class="icon" id="cart-icon">
+                            <span class="tooltip1">Кошик</span>
+                            <img src="/STYLEZERO/Картинки/shopping-bag-regular-24.png" alt="Cart Icon">
+                        </div>
+                    </div>
+
+                    <div id="blur-overlay"></div>
+
+                    <div id="cart-modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close"><i class='bx bx-x bx-flashing bx-rotate-90' ></i></span>
+                            <h4><u>Shopping Bag</u></h4>
+                            <hr>
+
+                            <div class="bottom-line2"></div>
+                            <div class="buttons">
+                                <button class="continue-shopping">Continue Shopping</button>
+                                <button class="checkout">Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Close button -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-large-line"></i>
+                </div>
+
+                <div class="nav__social">
+                    <a href="https://www.instagram.com/" target="_blank" class="nav__social-link">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <div class="text-content">
+            <h1>Чоловіки</h1>
+            <p> Чоловіки в елегантному одязі виглядає так само вишукано, як картина у витонченій рамі.</p>
+        </div>
+    </div>
+
+
+    <div class="sorting-system">
+        <div class="sorting-item" style="margin-left: 20px;">
+            <button class="sorting-button" onclick="toggleList(this)">
+            <i class="fas fa-caret-down" style="font-size: 20px;"></i>
+            <span class="sorting-title" style="font-size: 20px;">Категорія</span>
+          </button>
+            <ul class="sorting-list">
+                <li>Всі</li>
+                <li>Взуття</li>
+                <li>Одяг</li>
+                <li>Аксесуари</li>
+            </ul>
+        </div>
+        <div class="sorting-item" style="margin-left: 20px;">
+            <button class="sorting-button" onclick="toggleList(this)">
+            <i class="fas fa-caret-down" style="font-size: 20px;"></i>
+            <span class="sorting-title" style="font-size: 20px;">Тип товару</span>
+          </button>
+            <ul class="sorting-list">
+                <li>Всі</li>
+                <li>Кросівки</li>
+                <li>Куртка</li>
+                <li>Майка</li>
+                <li>Сумки</li>
+                <li>Худі</li>
+                <li>Футболки</li>
+                <li>Шорти</li>
+                <li>Штани</li>
+                <li>Джинси</li>
+                <li>Світер</li>
+            </ul>
+        </div>
+
+        <div class="sorting-item" style="margin-left: 20px;">
+            <button class="sorting-button" onclick="toggleList(this)">
+                <i class="fas fa-caret-down" style="font-size: 20px;"></i>
+                <span class="sorting-title" style="font-size: 20px;">Бренди</span>
+            </button>
+            <ul class="sorting-list">
+                <li>Всі</li>
+                <li>Nike</li>
+                <li>Adidas</li>
+                <li>New Balance</li>
+                <li>Asics</li>
+                <li>Supreme</li>
+                <li>Corteiz</li>
+                <li>Fear of God Essentials</li>
+                <li>Denim Tears</li>
+                <li>Sp5der</li>
+                <li>Gap</li>
+                <li>Who Decides War</li>
+                <li>Stussy</li>
+                <li>Zara</li>
+                <li>Palm Angels</li>
+                <li>PURPLE BRAND</li>
+                <li>Polo Ralph Lauren</li>
+                <li>Air Jordan</li>
+                <li>Comme des Garçons PLAY</li>
+                <li>Moncler</li>
+                <li>Palace</li>
+                <li>BAPE</li>
+                <li>Travis Scott</li>
+                <li>Diesel</li>
+                <li>Dime</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="product-container">
+        <div class="product" data-category="взуття" data-type="кросівки" data-brand="Air Jordan">
+            <a href="/STYLEZERO/Продукт 1/index1.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/JORDAN 5 RETRO DUNK ON MARS 3.jpeg" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/JORDAN 5 RETRO DUNK ON MARS 4.jpeg" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 1/index1.html">
+                    <p class="product-title">Jordan 5 Retro Dunk On Mars</p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$264,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="взуття" data-type="кросівки" data-brand="Nike">
+            <a href="/STYLEZERO/Продукт 2/index2.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Nike Hot Step Air Terra Drake NOCTA White 1.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Nike Hot Step Air Terra Drake NOCTA White 2.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 2/index2.html">
+                    <p class="product-title">Nike Hot Step Air Terra Drake NOCTA White</p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$281,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="взуття" data-type="кросівки" data-brand="Nike">
+            <a href="/STYLEZERO/Продукт 3/index3.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Nike Air Force 1 Low '07 QS Purple Skeleton Halloween 2021 1.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Nike Air Force 1 Low '07 QS Purple Skeleton Halloween 2021 2.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 3/index3.html">
+                    <p class="product-title">Nike Air Force 1 Low '07 QS Purple Skeleton Halloween </p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$288,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="одяг" data-type="світер" data-brand="Nike" data-brand="Stussy">
+            <a href="/STYLEZERO/Продукт 4/index4.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Nike X Stussy Knit Sweater Natural 1.png" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Nike X Stussy Knit Sweater Natural 2.png" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 4/index4.html">
+                    <p class="product-title">Nike X Stussy Knit Sweater Natural
+                    </p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$266,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="одяг" data-type="худі" data-brand="Nike">
+            <a href="/STYLEZERO/Продукт 5/index5.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Script Spray Hoodie - Pink 1.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Script Spray Hoodie - Pink 2.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 5/index5.html">
+                    <p class="product-title">Trapstar Script Spray Hoodie - Pink</p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$282,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="одяг" data-type="худі" data-brand="Nike">
+            <a href="/STYLEZERO/Продукт 6/index6.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Nike ACG Balaclava Retro Fleece Pullover Jacket 1.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Nike ACG Balaclava Retro Fleece Pullover Jacket 2.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 6/index6.html">
+                    <p class="product-title">Nike ACG Balaclava Retro Fleece Pullover Jacket</p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$227,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="одяг" data-type="джинси" data-brand="Dime">
+            <a href="/STYLEZERO/Продукт 7/index7.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Classic Baggy Denim Pants 1.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Classic Baggy Denim Pants2.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 7/index7.html">
+                    <p class="product-title">Dime Classic Baggy Denim Pants
+                    </p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$127,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="одяг" data-type="штани" data-brand="Supreme">
+            <a href="/STYLEZERO/Продукт 8/index8.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Supreme Stone Island Sweatpant (FW23) Dark Green 1.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Supreme Stone Island Sweatpant (FW23) Dark Green 2.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 8/index8.html">
+                    <p class="product-title">Supreme Stone Island Sweatpant (FW23) Dark Green</p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$344,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="одяг" data-type="штани" data-brand="Nike">
+            <a href="/STYLEZERO/Продукт 9/index9.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/GD PAINTED FLARE SWEATPANT1.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/GD PAINTED FLARE SWEATPANT 2.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+            <a href="/STYLEZERO/Продукт 9/index9.html">
+                <div class="title-rating">
+                    <div class="rating">
+                        <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                    </div>
+                    <p class="product-title"> GD PAINTED FLARE SWEATPANT</p>
+                </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$999,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="одяг" data-type="куртка" data-brand="Nike">
+            <a href="/STYLEZERO/Продукт 10/index10.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/BLUEENTRYSTATEPUFFER_F.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/BLUEENTRYSTATEPUFFER_B.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 10/index10.html">
+                    <p class="product-title"> It’s a Secret Puffer AW24 - Blue</p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$245,00</div>
+            </div>
+        </div>
+
+
+        <div class="product" data-category="одяг" data-type="куртка" data-brand="Supreme">
+            <a href="/STYLEZERO/Продукт 11/index11.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Supreme X DUCATI SS24 WEEK16 Track Jacket1.webp" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Supreme X DUCATI SS24 WEEK16 Track Jacket 2.webp" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 11/index11.html">
+                    <p class="product-title">Supreme X DUCATI SS24 WEEK16 Track Jacket </p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$294,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="одяг" data-type="куртка" data-brand="Palace">
+            <a href="/STYLEZERO/Продукт 12/index12.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Palace Ripstop Arc Puffa 'Grey' 1.jpeg" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Palace Ripstop Arc Puffa 'Grey' 2.jpeg" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 12/index12.html">
+                    <p class="product-title"> Palace Ripstop Arc Puffa 'Grey'</p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$500,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="взуття" data-type="кросівки" data-brand="Air Jordan">
+            <a href="/STYLEZERO/Продукт 13/index13.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Fire Red Black Tongue 2013 1 (1).png" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Fire Red Black Tongue 2013 2 (1).png" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 13/index13.html">
+                    <p class="product-title">Jordan 5 Retro Fire Red Black Tongue 2013 </p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$667,00</div>
+            </div>
+        </div>
+
+        <div class="product" data-category="взуття" data-type="кросівки" data-brand="Air Jordan">
+            <a href="/STYLEZERO/Продукт 14/index14.html">
+                <div class="image-flip">
+                    <img src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 1 (1).jpg" alt="Front Image" class="front">
+                    <!-- Передня картинка -->
+                    <img src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 2 (1).jpg" alt="Back Image" class="back">
+                    <!-- Задня картинка -->
+                </div>
+            </a>
+
+            <div class="title-rating">
+                <div class="rating">
+                    <i class='bx bx-heart' onclick="toggleHeart(this)"></i>
+                </div>
+                <a href="/STYLEZERO/Продукт 14/index14.html">
+                    <p class="product-title">Jordan 5 Retro Paris Saint-Germain </p>
+            </div>
+            </a>
+            <div class="product-info">
+                <div class="price">$402,00</div>
+            </div>
+        </div>
+
+
+        <footer>
+            <div class="row">
+                <div class="col">
+                    <div class="logo">
+                        <h1>Noir</h1>
+                    </div>
+                    <p>Інтернет-магазин брендових речей — це сучасна онлайн-платформа, яка пропонує широкий асортимент стильного одягу, взуття та аксесуарів від світових брендів. Магазин орієнтований на клієнтів, які цінують якість, оригінальність і тренди.</p>
+                </div>
+                <div class="col">
+                    <h3>Office
+                        <div class="underline"><span></span></div>
+                    </h3>
+                    <p>ITPL Road</p>
+                    <p>Witefield, Bangalore</p>
+                    <p>Karnataka, PIN 560065, India</p>
+                    <p class="email-id">taraskilq@gmail.com</p>
+                    <h4>+380 - 0985908747</h4>
+                </div>
+                <div class="col">
+                    <h3>Links
+                        <div class="underline"><span></span></div>
+                    </h3>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Features</a></li>
+                        <li><a href="">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>Newsletter
+                        <div class="underline"><span></span></div>
+                    </h3>
+                    <form>
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" placeholder="Enter your email id" required>
+                        <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                    <div class="social-icons">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <i class="fa-brands fa-pinterest"></i>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Easy Tutorials © 2025 – All Rights Reserved</p>
+        </footer>
+
+        <!--==================== MAIN ====================-->
+        <main>
+            <!-- Insert page sections -->
+        </main>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/mainqt.js"></script>
+</body>
+
+</html>

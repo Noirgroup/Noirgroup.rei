@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/15da9e94da.js" crossorigin="anonymous"></script>
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles1.css">
+
+    <title>Responsive navbar - Bedimcode</title>
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="/STYLEZERO/Титульна сторінка/index0.html" class="nav__logo">
+                <div class="noir-text">Noir</div>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Меню/indexxx.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Магазин</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Бренди/indexqr.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Бренди</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Чоловіки/indexqt.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Чоловіки</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Жінки/index.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Жінки</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="icon-bar">
+                    <div class="search-container">
+                        <button class="search-icon" onclick="toggleSearch()">
+                            <img src="/STYLEZERO/Картинки/search-regular-24.png" alt="Search">
+                        </button>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search...">
+                            <button class="close-icon" onclick="toggleSearch()">
+                                <img src="/STYLEZERO/Картинки/x-regular-24.png" alt="Close">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="icon" id="login-icon">
+                        <a href="/STYLEZERO/Особистий кабінет/Index11.html">
+                            <span class="tooltip">Увійти</span>
+                            <img src="/STYLEZERO/Картинки/user-regular-24.png" alt="Login Icon">
+                        </a>
+                    </div>
+
+                    <a href="/STYLEZERO/Жінки/wishlist.html" class="icon" id="wishlist-icon">
+                        <span class="tooltip">Список бажань</span>
+                        <img src="/STYLEZERO/Картинки/heart-regular-24.png" alt="Wishlist Icon">
+                    </a>
+
+                    <div class="navbar1">
+                        <div class="icon" id="cart-icon">
+                            <span class="tooltip1">Кошик</span>
+                            <img src="/STYLEZERO/Картинки/shopping-bag-regular-24.png" alt="Cart Icon">
+                        </div>
+                    </div>
+
+                    <!-- Модальне<div id="new-cart-modal" class="new-cart-modal">
+                        <div class="new-cart-modal-content">
+                            <h5>СУМКА ДЛЯ ПОКУПОК <span class="new-cart-close">&times;</span></h5>
+                            <hr class="divider">
+                            <p>У ВАШОМУ КОШИКУ НЕМАЄ ТОВАРІВ.</p>
+                            <button class="continue-shopping-btn">ПРОДОВЖИТИ ПОКУПКИ</button>
+                        </div>
+                    </div> вікно -->
+                </div>
+
+
+                <div class="nav__social">
+                    <a href="https://www.instagram.com/" target="_blank" class="nav__social-link">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+
+        </nav>
+    </header>
+    <div class="full-screen-wrapper">
+        <div class="slider-wrapper">
+            <div class="slider" id="slider">
+                <div class="slide"><img src="/STYLEZERO/Фото Продукта/JORDAN 5 RETRO DUNK ON MARS 3.jpeg" alt="Image 3"></div>
+                <div class="slide"><img src="/STYLEZERO/Фото Продукта/JORDAN 5 RETRO DUNK ON MARS 1.jpeg" alt="Image 1"></div>
+                <div class="slide"><img src="/STYLEZERO/Фото Продукта/JORDAN 5 RETRO DUNK ON MARS 2.jpeg" alt="Image 2"></div>
+                <div class="slide"><img src="/STYLEZERO/Фото Продукта/JORDAN 5 RETRO DUNK ON MARS 4.jpeg" alt="Image 4"></div>
+                <div class="slide"><img src="/STYLEZERO/Фото Продукта/JORDAN 5 RETRO DUNK ON MARS 5.jpeg" alt="Image 5"></div>
+                <div class="slide"><img src="/STYLEZERO/Фото Продукта/JORDAN 5 RETRO DUNK ON MARS 6.jpeg" alt="Image 6"></div>
+            </div>
+        </div>
+
+        <div id="customModalGallery" class="custom-modal">
+            <span class="custom-close" onclick="closeGallery()">&times;</span>
+            <img class="custom-modal-content" id="customModalImage">
+            <a class="custom-prev" onclick="changeImage(-1)">&#10094;</a>
+            <a class="custom-next" onclick="changeImage(1)">&#10095;</a>
+        </div>
+        <div class="hort">
+            <div class="product-details">
+                <h1>Jordan 5 Retro Paris Saint-Germain <button class="favorite-icon" onclick="toggleHeart(this)">
+                <i class='bx bx-heart'></i>
+             </button></h1>
+
+
+                <div class="color-selection">
+                    <a href="/STYLEZERO/Продукт 14/index14.html">
+                        <div style="background-color: rgba(17, 17, 17, 1.00);"></div>
+                    </a>
+                    <a href="/STYLEZERO/Продукт 13/index13.html">
+                        <div style="background-color: rgba(254, 254, 255, 1.00);" class="selected"></div>
+                    </a>
+                    <a href="/STYLEZERO/Продукт 1/index1.html">
+                        <div style="background-color: rgba(168, 62, 49, 1.00);"></div>
+                    </a>
+                </div>
+                <div class="width">
+                    <!-- Розділ "Доставка 5 днів" -->
+                    <div class="width-delivery-5-days">
+                        <div class="width-titel">
+                            <h3>Доставка 5 днів</h3>
+                        </div>
+                        <div class="sizes-container">
+                            <div class="size" data-price="160"><span>39</span></div>
+                            <div class="size" data-price="170"><span>41</span></div>
+                            <div class="size" data-price="180"><span>42</span></div>
+                            <div class="size" data-price="190"><span>42.5</span></div>
+                            <div class="size" data-price="200"><span>43</span></div>
+                            <div class="size" data-price="210"><span>44</span></div>
+                            <div class="size" data-price="220"><span>44.5</span></div>
+                            <div class="size" data-price="230"><span>45</span></div>
+                            <div class="size" data-price="240"><span>45.5</span></div>
+                            <div class="size" data-price="250"><span>46</span></div>
+                            <div class="size" data-price="260"><span>47</span></div>
+                            <div class="size" data-price="270"><span>47.5</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Розділ "Доставка 10 днів" -->
+                    <div class="width-item delivery-10-days">
+                        <div class="width-titel">
+                            <h3>Доставка 10 днів</h3>
+                        </div>
+                        <div class="sizes-container">
+                            <div class="size" data-price="160"><span>39</span></div>
+                            <div class="size" data-price="170"><span>41</span></div>
+                            <div class="size" data-price="180"><span>42</span></div>
+                            <div class="size" data-price="190"><span>42.5</span></div>
+                            <div class="size" data-price="200"><span>43</span></div>
+                            <div class="size" data-price="210"><span>44</span></div>
+                            <div class="size" data-price="220"><span>44.5</span></div>
+                            <div class="size" data-price="230"><span>45</span></div>
+                            <div class="size" data-price="240"><span>45.5</span></div>
+                            <div class="size" data-price="250"><span>46</span></div>
+                            <div class="size" data-price="260"><span>47</span></div>
+                            <div class="size" data-price="270"><span>47.5</span></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="button-group">
+                    <button class="add-to-bag">Додати до Кошика</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="product-info">
+        <h1> Air Jordan 5 Retro "Dunk On Mars"</h1>
+        <div class="product-content">
+            <div class="description">
+                <h3>Опис</h3>
+                <p>
+                    Натхненні космічною тематикою, Air Jordan 5 Retro "Dunk On Mars" є частиною колекції, яка святкує любов до баскетболу та космічних досліджень. Ці кросівки поєднують класичні елементи дизайну з інноваційними матеріалами, забезпечуючи комфорт та стиль як
+                    на майданчику, так і поза ним. Модель має елементи, які символізують планету Марс, додаючи яскравий відтінок вогненної червоної кольорової гами, натхненний космічними темами.
+                </p>
+
+                <h3>Матеріали:</h3>
+                <p>
+                    <li>Матеріали: Замшевий верх, гумова підошва, текстильна підкладка.</li>
+                </p>
+                <h3>Догляд:</h3>
+                <p>
+                    <li>Не використовувати пральну машину.</li>
+                    <li>Очищення м'якою тканиною з використанням спеціальних засобів для замші.</li>
+                    <li>Не використовувати хімчистку.</li>
+                    <li>Уникати сильного забруднення водою.
+                    </li>
+                </p>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <img src="/STYLEZERO/Фото Продукта/Технічні характеристики .jpg" alt="Технічні характеристики">
+                    <h3>Технічні характеристики:</h3>
+                    <p>
+                        <li>Амортизація: Вбудована повітряна подушка Air-Sole для поглинання ударів. </li>
+                        <li>Захист: Підтримка п’яти з м’якою підкладкою для додаткового комфорту. </li>
+                        <li>Тривкість: Гумова підошва забезпечує максимальне зчеплення і стійкість на різних поверхнях. </li>
+                        <li>Елементи дизайну:Світловідбиваючі деталі на язичку і класична вставка "Jumpman" для стильного вигляду.</li>
+                    </p>
+                </div>
+                <div class="feature">
+                    <img src="/STYLEZERO/Фото Продукта/Будівництво.jpg" alt="Будівництво">
+                    <h3>Будівництво:</h3>
+                    <p>
+                        <li>Матеріали: Верх виготовлений із преміум-замші, що забезпечує довговічність і водночас зберігає легкість.</li>
+                        <li>Зносостійкість: Спеціальні вставки на боках для додаткового захисту від стирання.</li>
+                        <li>Застібка: Класична шнурівка з пластиковими фіксаторами для надійного тримання ноги.</li>
+                    </p>
+                </div>
+                <div class="feature">
+                    <img src="/STYLEZERO/Фото Продукта/Додаткове.jpg" alt="Додаткове">
+                    <h3>Додаткове:</h3>
+                    <p>
+                        <li>Покриття: Верх замші оброблений для водонепроникності та легкого догляду.</li>
+                        <li>Логотип: Класичний логотип "Jumpman" на п'ятці та язичку.</li>
+                        <li>Підошва: Спеціальний малюнок протектора, який забезпечує додаткове зчеплення з поверхнею.</li>
+                        <li>Екологічні матеріали: Використання замші, сертифікованої за стандартами стійкості.</li>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="centered-text">
+        <h2>Вам також може сподобатися</h2>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-image">
+                <img class="default-img" src="/STYLEZERO/Фото Продукта/Nike Air Force 1 Low Triple Red 1.png" alt="Основне зображення 1">
+                <img class="hover-img" src="/STYLEZERO/Фото Продукта/Nike Air Force 1 Low Triple Red 2.png" alt="Зображення при наведенні 1">
+            </div>
+            <h3 class="product-name">Air Force 1 Low '07 LV8 1 'Triple Red'</h3>
+            <p class="product-price">186,00$</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img class="default-img" src="/STYLEZERO/Фото Продукта/Jordan 13 Retro Gym Red Flint Grey 1.png" alt="Основне зображення 2">
+                <img class="hover-img" src="/STYLEZERO/Фото Продукта/Jordan 13 Retro Gym Red Flint Grey 2.png" alt="Зображення при наведенні 2">
+            </div>
+            <h3 class="product-name">Air Jordan 13 Retro 'Red Flint'</h3>
+            <p class="product-price">172,00$</p>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img class="default-img" src="/STYLEZERO/Фото Продукта/JORDAN 6 Retro Carmine 2021 1.png" alt="Основне зображення 4">
+                <img class="hover-img" src="/STYLEZERO/Фото Продукта/JORDAN 6 Retro Carmine 2021 2.png" alt="Зображення при наведенні 4">
+            </div>
+            <h3 class="product-name">Air Jordan 6 Retro OG 'Carmine' 2021</h3>
+            <p class="product-price">210,00$</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="row">
+            <div class="col">
+                <div class="logo">
+                    <h1>Noir</h1>
+                </div>
+                <p>Інтернет-магазин брендових речей — це сучасна онлайн-платформа, яка пропонує широкий асортимент стильного одягу, взуття та аксесуарів від світових брендів. Магазин орієнтований на клієнтів, які цінують якість, оригінальність і тренди.</p>
+            </div>
+            <div class="col">
+                <h3>Office
+                    <div class="underline"><span></span></div>
+                </h3>
+                <p>ITPL Road</p>
+                <p>Witefield, Bangalore</p>
+                <p>Karnataka, PIN 560065, India</p>
+                <p class="email-id">taraskilq@gmail.com</p>
+                <h4>+380 - 0985908747</h4>
+            </div>
+            <div class="col">
+                <h3>Links
+                    <div class="underline"><span></span></div>
+                </h3>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="">About us</a></li>
+                    <li><a href="">Features</a></li>
+                    <li><a href="">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Newsletter
+                    <div class="underline"><span></span></div>
+                </h3>
+                <form>
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Enter your email id" required>
+                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Easy Tutorials © 2025 – All Rights Reserved</p>
+    </footer>
+</body>
+
+<script src="assets/js/main1.js "></script>
+
+</html>

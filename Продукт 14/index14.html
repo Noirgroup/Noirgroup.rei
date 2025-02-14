@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles14.css">
+
+    <title>Responsive navbar - Bedimcode</title>
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="/STYLEZERO/Титульна сторінка/index0.html" class="nav__logo">
+                <img src="/STYLEZERO/Картинки/Логотип.jpg" alt="Логотип магазину" class="nav__logo-img">
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Меню/index.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Магазин</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Бренди</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Чоловіки/index.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Чоловіки</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="/STYLEZERO/Жінки/index.html" class="nav__link">
+                            <i class="ri-arrow-right-up-line"></i>
+                            <span>Жінки</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="icon-bar">
+                    <div class="search-container">
+                        <button class="search-icon" onclick="toggleSearch()">
+                            <img src="/STYLEZERO/Картинки/search-regular-24.png" alt="Search">
+                        </button>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search...">
+                            <button class="close-icon" onclick="toggleSearch()">
+                                <img src="/STYLEZERO/Картинки/x-regular-24.png" alt="Close">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="icon" id="login-icon">
+                        <a href="/STYLEZERO/Особистий кабінет/Index11.html">
+                            <span class="tooltip">Увійти</span>
+                            <img src="/STYLEZERO/Картинки/user-regular-24.png" alt="Login Icon">
+                        </a>
+                    </div>
+                    <div class="icon" id="wishlist-icon">
+                        <span class="tooltip">Список бажань</span>
+                        <img src="/STYLEZERO/Картинки/heart-regular-24.png" alt="Wishlist Icon">
+                    </div>
+                    <div class="navbar1">
+                        <div class="icon" id="cart-icon">
+                            <span class="tooltip1">Кошик</span>
+                            <img src="/STYLEZERO/Картинки/shopping-bag-regular-24.png" alt="Cart Icon">
+                        </div>
+                    </div>
+
+                    <div id="blur-overlay"></div>
+
+                    <div id="cart-modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close"><i class='bx bx-x bx-flashing bx-rotate-90' ></i></span>
+                            <h4><u>Shopping Bag</u></h4>
+                            <hr>
+
+                            <div class="bottom-line2"></div>
+                            <div class="buttons">
+                                <button class="continue-shopping">Continue Shopping</button>
+                                <button class="checkout">Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Close button -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-large-line"></i>
+                </div>
+
+                <div class="nav__social">
+                    <a href="https://www.instagram.com/" target="_blank" class="nav__social-link">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="full-screen-wrapper">
+        <div class="product-item">
+
+            <div class="image-gallery">
+                <a href="index14(1).html">
+                    <img class="thumbnail" src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 1 (1).jpg" alt="JORDAN 5 RETRO DUNK ON MARS 3">
+                </a>
+                <a href="index14(1).html">
+                    <img class="thumbnail" src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 2 (1).jpg" alt="JORDAN 5 RETRO DUNK ON MARS 4">
+                </a>
+                <a href="index14(1).html">
+                    <img class="thumbnail" src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 3.jpg" alt="JORDAN 5 RETRO DUNK ON MARS 1">
+                </a>
+                <a href="index14(1).html">
+                    <img class="thumbnail" src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 4.jpg" alt="JORDAN 5 RETRO DUNK ON MARS 2">
+                </a>
+                <a href="index14(1).html">
+                    <img class="thumbnail" src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 5.jpg" alt="JORDAN 5 RETRO DUNK ON MARS 5">
+                </a>
+                <a href="index14(1).html">
+                    <img class="thumbnail" src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 6 (1).jpg" alt="JORDAN 5 RETRO DUNK ON MARS 6">
+                </a>
+            </div>
+
+            <!-- Основне зображення -->
+            <div class="product-image">
+                <img id="mainImage" src="/STYLEZERO/Фото Продукта/Jordan 5 Retro Paris Saint-Germain 1 (1).jpg" alt="Основне зображення">
+            </div>
+
+
+        </div>
+
+
+
+        <div id="customModalGallery" class="custom-modal">
+            <span class="custom-close" onclick="closeGallery()">&times;</span>
+            <img class="custom-modal-content" id="customModalImage">
+            <a class="custom-prev" onclick="changeImage(-1)">&#10094;</a>
+            <a class="custom-next" onclick="changeImage(1)">&#10095;</a>
+        </div>
+
+        <div class="product-details">
+            <h1>Jordan 5 Retro Paris Saint-Germain</h1>
+            <p class="product-price">$402.00</p>
+
+            <div class="color-selection">
+                <a href="/STYLEZERO/Продукт 14/index14.html">
+                    <div style="background-color: rgba(17, 17, 17, 1.00);"></div>
+                </a>
+                <a href="/STYLEZERO/Продукт 13/index13.html">
+                    <div style="background-color: rgba(254, 254, 255, 1.00);" class="selected"></div>
+                </a>
+                <a href="/STYLEZERO/Продукт 1/index1.html">
+                    <div style="background-color: rgba(168, 62, 49, 1.00);"></div>
+                </a>
+            </div>
+
+            <div class="size-selection">
+                <div id="sizeToggle" class="size-toggle" onclick="toggleSizeDropdown()">Choose size <i class='bx bxs-down-arrow'></i></div>
+                <hr class="size-underline" />
+                <div id="sizeDropdown" class="size-options">
+                    <div class="size-option" onclick="selectSize('38')">38</div>
+                    <div class="size-option" onclick="selectSize('38.5')">38.5</div>
+                    <div class="size-option" onclick="selectSize('39')">39</div>
+                    <div class="size-option" onclick="selectSize('39.5')">39.5</div>
+                    <div class="size-option" onclick="selectSize('40')">40</div>
+                    <div class="size-option" onclick="selectSize('40.5')">40.5</div>
+                    <div class="size-option" onclick="selectSize('41')">41</div>
+                    <div class="size-option" onclick="selectSize('41.5')">41.5</div>
+                    <div class="size-option" onclick="selectSize('42')">42</div>
+                    <div class="size-option" onclick="selectSize('42.5')">42.5</div>
+                    <div class="size-option" onclick="selectSize('43')">43</div>
+                    <div class="size-option" onclick="selectSize('43.5')">43.5</div>
+                    <div class="size-option" onclick="selectSize('44')">44</div>
+                </div>
+            </div>
+
+
+            <div class="button-group">
+                <button class="add-to-bag">ADD TO BAG</button>
+                <button class="favorite-icon" onclick="toggleHeart(this)">
+                        <i class='bx bx-heart'></i>
+                    </button>
+            </div>
+
+            <p>Delivery within 2-4 working days</p>
+            <p>Free Shipping on orders over €99</p>
+            <p>60 Days Free Returns</p>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script src="assets/js/main14.js"></script>
+
+</html>
